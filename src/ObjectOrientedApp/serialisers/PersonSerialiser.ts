@@ -1,8 +1,9 @@
-import Person from '../models/Person'
-import ValidationError from '../classes/ValidationError'
+import Person from '../models/people/Person'
+import ValidationError from '../models/errors/ValidationError'
+import Serialiser from '../serialisers/contracts/Serialiser'
 
-class PersonDTO {
-  deserialise(record: string): Person | ValidationError {
+class PersonSerialiser implements Serialiser<ValidationError, Person> {
+  deserialise(record: string) {
     const [...results] = record.split(',')
 
     if (results.length !== 3 && results.filter((str) => !!str).length !== 3) {
@@ -18,4 +19,4 @@ class PersonDTO {
   }
 }
 
-export default PersonDTO
+export default PersonSerialiser

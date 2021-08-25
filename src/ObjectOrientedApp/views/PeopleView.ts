@@ -1,4 +1,4 @@
-import Person from '../models/Person'
+import Person from '../models/people/Person'
 
 class PeopleView {
   constructor(private people: Person[]) {
